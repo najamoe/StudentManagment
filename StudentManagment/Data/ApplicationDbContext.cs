@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using StudentManagment.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+
 
 
 namespace StudentManagment.Data
@@ -17,5 +19,12 @@ namespace StudentManagment.Data
         public DbSet<Models.Courses> Courses { get; set; }
         public DbSet<Models.Enrollment> Enrollments { get; set; }
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Students>().HasKey(s => s.StudentId);
+            modelBuilder.Entity<Courses>().HasKey(c => c.CourseId);  
+            modelBuilder.Entity<Enrollment>().HasKey(e => e.EnrollmentId);
+        }
     }
 }
