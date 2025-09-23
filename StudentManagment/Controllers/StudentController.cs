@@ -23,10 +23,10 @@ namespace StudentManagment.Controllers
             return Ok(students);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetStudent(int id)
+        [HttpGet("{StudentId}")]
+        public async Task<IActionResult> GetStudent(int StudentId)
         {
-            var student = await _context.Students.FindAsync(id);
+            var student = await _context.Students.FindAsync(StudentId);
             if (student == null)
             {
                 return NotFound();
@@ -43,13 +43,13 @@ namespace StudentManagment.Controllers
             }
             _context.Students.Add(student);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetStudent), new { id = student.Id }, student);
+            return CreatedAtAction(nameof(GetStudent), new { StudentId = student.StudentId }, student);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateStudent(int id, [FromBody] Students student)
+        [HttpPut("{StudentId}")]
+        public async Task<IActionResult> UpdateStudent(int StudentId, [FromBody] Students student)
         {
-            if (id != student.Id || !ModelState.IsValid)
+            if (StudentId != student.StudentId || !ModelState.IsValid)
             {
                 return BadRequest();
             }
@@ -60,7 +60,7 @@ namespace StudentManagment.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!_context.Students.Any(e => e.Id == id))
+                if (!_context.Students.Any(e => e.StudentId == StudentId))
                 {
                     return NotFound();
                 }
@@ -72,10 +72,10 @@ namespace StudentManagment.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteStudent(int id)
+        [HttpDelete("{StudentId}")]
+        public async Task<IActionResult> DeleteStudent(int StudentId)
         {
-            var student = await _context.Students.FindAsync(id);
+            var student = await _context.Students.FindAsync(StudentId);
             if (student == null)
             {
                 return NotFound();
