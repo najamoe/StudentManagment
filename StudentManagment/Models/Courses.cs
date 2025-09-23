@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,9 @@ namespace StudentManagment.Models
     {
         public int CourseId { get; set; }
         public required string Title { get; set; }
-        public int Credits { get; set; }
+
+        [Precision(5, 2)]
+        public decimal Credits { get; set; }
 
         // Foreign key property - Created with nullable to allow courses without an assigned instructor
         public int? InstructorId { get; set; }
