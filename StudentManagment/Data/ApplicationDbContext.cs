@@ -25,6 +25,21 @@ namespace StudentManagment.Data
             modelBuilder.Entity<Students>().HasKey(s => s.StudentId);
             modelBuilder.Entity<Courses>().HasKey(c => c.CourseId);  
             modelBuilder.Entity<Enrollment>().HasKey(e => e.EnrollmentId);
+
+            modelBuilder.Entity<Enrollment>()
+                .HasOne(e => e.Student)
+                .WithMany(s => s.Enrollments)
+                .HasForeignKey(e => e.StudentId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Enrollment>()
+                .HasOne(e => e.Course)
+                .WithMany(c => c.Enrollments)
+                .HasForeignKey(e => e.CourseId)
+                .OnDelete(DeleteBehavior.Cascade);
+
         }
+
+
     }
 }
