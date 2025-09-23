@@ -12,6 +12,7 @@ namespace StudentManagment.Models
         public required string Firstname { get; set; }
         public string? MiddleName { get; set; }
         public required string Lastname { get; set; }
+        public required DateOnly DateOfBirth { get; set; }
         public required string Email { get; set; }
         public DateTime EnrollmentDate { get; set; }
 
