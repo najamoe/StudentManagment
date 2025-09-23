@@ -38,7 +38,11 @@ namespace StudentManagment.Data
                 .WithMany(c => c.Enrollments)
                 .HasForeignKey(e => e.CourseId)
                 .OnDelete(DeleteBehavior.Cascade);
-           
+           modelBuilder.Entity<Courses>()
+                .HasOne(c => c.Instructor)
+                .WithMany(i => i.Courses)
+                .HasForeignKey(c => c.InstructorId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
 
 
