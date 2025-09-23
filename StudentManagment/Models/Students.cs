@@ -10,6 +10,7 @@ namespace StudentManagment.Models
     {
         public int StudentId { get; set; }
         public required string Firstname { get; set; }
+        public string? MiddleName { get; set; }
         public required string Lastname { get; set; }
         public required string Email { get; set; }
         public DateTime EnrollmentDate { get; set; }
