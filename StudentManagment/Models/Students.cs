@@ -14,5 +14,8 @@ namespace StudentManagment.Models
         public required string Email { get; set; }
         public DateTime EnrollmentDate { get; set; }
 
+        // Navigation property for related enrollments
+        public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
+
     }
 }

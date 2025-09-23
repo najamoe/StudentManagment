@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StudentManagment.Models;
 
 namespace StudentManagment.Models
 {
@@ -13,5 +14,8 @@ namespace StudentManagment.Models
         public int CourseId { get; set; }
         public string? Grade { get; set; }
 
+        // Navigation properties
+        public required Students Student { get; set; }
+        public required Courses Course { get; set; }
     }
 }
