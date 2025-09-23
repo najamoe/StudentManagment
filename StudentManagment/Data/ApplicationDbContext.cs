@@ -26,6 +26,7 @@ namespace StudentManagment.Data
             modelBuilder.Entity<Courses>().HasKey(c => c.CourseId);  
             modelBuilder.Entity<Enrollment>().HasKey(e => e.EnrollmentId);
             modelBuilder.Entity<Instructor>().HasKey(i => i.InstructorId);
+            modelBuilder.Entity<Departments>().HasKey(d => d.DepartmentId);
 
             modelBuilder.Entity<Enrollment>()
                 .HasOne(e => e.Student)
@@ -42,6 +43,11 @@ namespace StudentManagment.Data
                 .HasOne(c => c.Instructor)
                 .WithMany(i => i.Courses)
                 .HasForeignKey(c => c.InstructorId)
+                .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<Departments>()
+                .HasOne(d => d.DepartmentHead)
+                .WithOne(i => i.HeadedDepartment)
+                .HasForeignKey<Departments>(d => d.DepartmentHeadId)
                 .OnDelete(DeleteBehavior.SetNull);
         }
 
