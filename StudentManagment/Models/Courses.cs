@@ -12,7 +12,11 @@ namespace StudentManagment.Models
         public required string Title { get; set; }
         public int Credits { get; set; }
 
+        // Foreign key property - Created with nullable to allow courses without an assigned instructor
+        public int? InstructorId { get; set; }
+
         // Navigation property for related enrollments
         public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
+        public Instructor? Instructor { get; set; }
     }
 }
