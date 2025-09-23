@@ -8,6 +8,9 @@
         public required string Email { get; set; }
         public DateTime HireDate { get; set; }
 
+        //Backreference to Departments where the instructor is the department head
+        public Departments? HeadedDepartment { get; set; }
+
         // Navigation property for related courses
         public ICollection<Courses> Courses { get; set; } = new List<Courses>();
     }
