@@ -19,7 +19,7 @@ The script can be applied to a fresh database and will build all tables, columns
 - **Change-based** = step-by-step migrations (e.g. add column, rename column).  
 - **State-based** = one script that describes the complete schema at its final state.  
 
-The state-based script was generated after completing all assignments, so it contains:
+The state-based script (FinalSchema) was generated after completing all assignments, so it contains:
 - Student table (with `MiddleName`, `DateOfBirth`)  
 - Enrollment table (with `FinalGrade`)  
 - Instructor and Department relations  
