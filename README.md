@@ -2,8 +2,9 @@
 ### Database migration with change-based migrations using ef migrations
 
 Each migration is created on its own branch. 
-The migrations (e.g add column or alter a column) was created with "dotnet ef migrations add + dotnet ef database update"
+The migrations (e.g add column or alter a column) was created with `dotnet ef migrations add + dotnet ef database update`
 After each migration, a branch was created for creating the sql file containing the recent changes. 
+The decision to create each task as a change-based migration, was simply that I, for each task was asked to do a minor change to the database. 
 
 ### Database migration with state-based migration using ef migrations
 
@@ -20,4 +21,6 @@ The state-based script (FinalSchema) was generated after completing all assignme
 - Student table (with `MiddleName`, `DateOfBirth`)  
 - Enrollment table (with `FinalGrade`)  
 - Instructor and Department relations  
-- Course table with foreign key to Instructor and decimal Credits  
+- Course table with foreign key to Instructor and decimal Credits
+
+  
