@@ -10,9 +10,6 @@ After each migration, a branch was created for creating the sql file containing 
 After all schema changes were applied using the change-based approach,  
 a state-based migration was generated to describe the **final desired schema**.
 
-In a state-based migration, the goal is not to replay each incremental step,  
-but instead to ensure that the database matches the **current model**.  
-
 This was done using the `dotnet ef migrations script` command, which generates a full SQL script that creates the schema in its latest state.  
 The script can be applied to a fresh database and will build all tables, columns, keys, and relationships exactly as they are defined in the final model.
 
